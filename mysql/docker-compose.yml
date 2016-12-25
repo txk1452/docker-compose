@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  mysql57:
+    container_name: mysql57
+    hostname: mysql57
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=worker
+      - MYSQL_USER=txk
+      - MYSQL_PASSWORD=txk
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./conf.d:/etc/mysql/conf.d
+      - ./data:/var/lib/mysql
+    ports:
+     - '3306:3306'
