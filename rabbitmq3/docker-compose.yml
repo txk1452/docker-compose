@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+# Rabbit service. See https://hub.docker.com/_/rabbitmq/
+  rabbit:
+    container_name: rabbit1
+    hostname: rabbit1
+    image:  rabbitmq:3-management
+    environment:
+     - RABBITMQ_DEFAULT_USER=rabbit
+     - RABBITMQ_DEFAULT_PASS=rabbit
+     - RABBITMQ_DEFAULT_VHOST=vhost
+    ports:
+     - '5671:5671'
+     - '5672:5672'
+     - '8080:15672'
+    #volumes:
+    # - './data:/var/lib/rabbitmq/mnesia'
