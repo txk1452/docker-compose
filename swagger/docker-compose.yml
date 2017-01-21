@@ -1,0 +1,47 @@
+version: '2'
+
+services:
+  swagger-editor:
+    container_name: swagger-editor
+    hostname: swagger-editor
+    image: swaggerapi/swagger-editor:latest
+    ports:
+     - '80:8080'
+  swagger-generator:
+    container_name: swagger-generator
+    hostname: swagger-generator
+    image: swaggerapi/swagger-generator:latest
+    environment:
+     - GENERATOR_HOST:http://192.168.222.130
+    ports:
+     - '81:8080'
+  swagger-validator:
+    container_name: swagger-validator
+    hostname: swagger-validator
+    image: swaggerapi/swagger-validator:latest
+    environment:
+      - SWAGGER_BASE_PATH:/validator
+    ports:
+     - '82:8080'
+  swagger-ui:
+    container_name: swagger-ui
+    hostname: swagger-ui
+    image: swaggerapi/swagger-ui:latest
+    ports:
+     - '83:8080'
+  swagger-petstore:
+    container_name: swagger-petstore
+    hostname: swagger-petstore
+    image: swaggerapi/petstore:latest
+    environment:
+     - SWAGGER_HOST:http://petstore.swagger.io
+     - SWAGGER_BASE_PATH:/v2
+    ports:
+     - '84:8080'
+  swagger-schema:
+    container_name: swagger-schema
+    hostname: swagger-schema
+    image: swaggerapi/swagger-schema:latest
+    ports:
+     - '85:8080'
+
